@@ -1,4 +1,4 @@
-setwd("c:/github/doerodney/NCAAB-D1M-2014-2015")
+setwd("c:/github/doerodney/NCAAB-D1M-2015-2016")
 
 df = read.csv("dataframe.csv", header=TRUE)
 
@@ -256,7 +256,7 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
   
   return(win_team_name)
 }
-
+# Run to here...
 
 predictBracketWinner<-function(team_list, df, model, nScenarios=10000)
 {
