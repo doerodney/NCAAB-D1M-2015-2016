@@ -110,12 +110,12 @@ getTeamConference <- function(df, teamName) {
     return(as.character(TeamConferences[1]))
 }
 
+
 predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
 {
   gamePossessionRange = getGamePossessionRange(df, teamName, opponentName)    
     
   teamConference = getTeamConference(df, teamName)
-  #teamPossessions = getPossessions(df, teamName)
   teamOffensiveRatings = getOffensiveRatings(df, teamName)
   teamDefensiveRatings = getDefensiveRatings(df, teamName)
   teamDefensiveRebounds  = getDefensiveRebounds(df, teamName)
@@ -124,7 +124,6 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
   teamBlockedShots = getBlockedShots(df, teamName)
   
   opponentConference = getTeamConference(df, opponentName)
-  #opponentPossessions = getPossessions(df, opponentName)
   opponentOffensiveRatings = getOffensiveRatings(df, opponentName)
   opponentDefensiveRatings = getDefensiveRatings(df, opponentName)
   opponentDefensiveRebounds  = getDefensiveRebounds(df, opponentName)
@@ -135,14 +134,12 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
   game_possessions = sample(gamePossessionRange, nScenarios, replace=TRUE)
   
   win_conference = rep(teamConference, nScenarios)
-  #win_possessions = sample(min(teamPossessions):max(teamPossessions), nScenarios, replace=TRUE)
-  #win_possessions = gamePossessions
+  win_possessions = game_possessions
   win_offensive_rating = runif(nScenarios, min(teamOffensiveRatings ), max( teamOffensiveRatings ))
   win_defensive_rating = runif(nScenarios, min(teamDefensiveRatings), max(teamDefensiveRatings))
   win_personal_fouls = sample(min(teamPersonalFouls):max(teamPersonalFouls), nScenarios, replace=TRUE)
   loss_conference = rep(opponentConference, nScenarios)
-  #loss_possessions = sample(min(opponentPossessions):max(opponentPossessions), nScenarios, replace=TRUE)
-  #lossPossessions = gamePossessions
+  loss_possessions = game_possessions
   loss_offensive_rating = runif(nScenarios, min(opponentOffensiveRatings), max(opponentOffensiveRatings))
   loss_defensive_rating = runif(nScenarios, min(opponentDefensiveRatings), max(opponentDefensiveRatings))
   loss_defensive_rebounds = runif(nScenarios, min(opponentDefensiveRebounds), max(opponentDefensiveRebounds))
@@ -153,12 +150,12 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
   # Create data frame for team score prediction.
   dfpt = cbind.data.frame(
     win_conference,
-    game_possessions,
+    win_possessions,
     win_offensive_rating,
     win_defensive_rating,
     win_personal_fouls,
     loss_conference,
-    game_possessions,
+    loss_possessions,
     loss_offensive_rating,
     loss_defensive_rating,
     loss_defensive_rebounds,
@@ -176,9 +173,9 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
   win_conference = x
   
   # Switch possessions
-  #x = loss_possessions
-  #loss_possessions = win_possessions
-  #win_possessions = x
+  x = loss_possessions
+  loss_possessions = win_possessions
+  win_possessions = x
   
   # Switch offensive ratings
   x = loss_offensive_rating
@@ -199,12 +196,12 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
   
   dfpo = cbind.data.frame(
     win_conference,
-    game_possessions,
+    win_possessions,
     win_offensive_rating,
     win_defensive_rating,
     win_personal_fouls,
     loss_conference,
-    game_possessions,
+    loss_possessions,
     loss_offensive_rating,
     loss_defensive_rating,
     loss_defensive_rebounds,
@@ -260,6 +257,8 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
   return(win_team_name)
 }
 # Run to here...
+
+# RPI = (WP * 0.25) + (OWP * 0.50) + (OOWP * 0.25)
 
 predictBracketWinner<-function(team_list, df, model, nScenarios=10000)
 {
