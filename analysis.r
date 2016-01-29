@@ -133,18 +133,32 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
   
   game_possessions = sample(gamePossessionRange, nScenarios, replace=TRUE)
   
+  # Simulate data between the 10th and 90th quantile.
+  minQuantile = 0.1
+  maxQuantile = 0.9
+  
   win_conference = rep(teamConference, nScenarios)
   win_possessions = game_possessions
-  win_offensive_rating = runif(nScenarios, min(teamOffensiveRatings ), max( teamOffensiveRatings ))
-  win_defensive_rating = runif(nScenarios, min(teamDefensiveRatings), max(teamDefensiveRatings))
+  
+  filtered = quantile(teamOffensiveRatings, c(minQuantile, maxQuantile))
+  win_offensive_rating = runif(nScenarios, filtered[[1]], filtered[[2]])
+  
+  filtered = quantile(teamDefensiveRatings, c(minQuantile, maxQuantile))
+  win_defensive_rating = runif(nScenarios, filtered[[1]], filtered[[2]])
+  
   win_personal_fouls = sample(min(teamPersonalFouls):max(teamPersonalFouls), nScenarios, replace=TRUE)
   loss_conference = rep(opponentConference, nScenarios)
   loss_possessions = game_possessions
-  loss_offensive_rating = runif(nScenarios, min(opponentOffensiveRatings), max(opponentOffensiveRatings))
-  loss_defensive_rating = runif(nScenarios, min(opponentDefensiveRatings), max(opponentDefensiveRatings))
+  
+  filtered = quantile(opponentOffensiveRatings, c(minQuantile, maxQuantile))
+  loss_offensive_rating = runif(nScenarios, filtered[[1]], filtered[[2]])
+  
+  filtered = quantile(opponentDefensiveRatings, c(minQuantile, maxQuantile))
+  loss_defensive_rating = runif(nScenarios, filtered[[1]], filtered[[2]])
   loss_defensive_rebounds = runif(nScenarios, min(opponentDefensiveRebounds), max(opponentDefensiveRebounds))
   loss_steals = sample(min(opponentSteals):max(opponentSteals), nScenarios, replace=TRUE)
   loss_blocked_shots = sample(min(opponentBlockedShots):max(opponentBlockedShots), nScenarios, replace=TRUE)
+  
   loss_personal_fouls = sample(min(opponentPersonalFouls):max(opponentPersonalFouls), nScenarios, replace=TRUE)
   
   # Create data frame for team score prediction.
