@@ -21,7 +21,7 @@ class TeamConference:
             'arizona-wildcats' : 'Pac-12',
             'arkansas-razorbacks' : 'Southeastern',
             'arkansas-state-red-wolves' : 'Sun Belt',
-            'army-black-knights' : 'Patriot League',
+            'army-west-point-black-knights' : 'Patriot League',
             'auburn-tigers' : 'Southeastern',
             'austin-peay-governors' : 'Ohio Valley',
             'ball-state-cardinals' : 'Mid-American',

@@ -464,7 +464,7 @@ plotHomeCourtAdvantage <- function( team_name, df) {
 	df_team = getHomeAwayMarginOfVictory(team_name, df)
 	alist = getHomeCourtAdvantage(team_name, df)
 	home_court_advantage = alist$home_court_advantage
-	probability = as.integer(alist$probability)
+	probability = alist$probability
 	
 	significance = ifelse(probability < 0.05, 'significant', 'not significant')
 	
