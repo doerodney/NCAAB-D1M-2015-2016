@@ -28,7 +28,7 @@ class TeamHomeCourt:
             'arizona-wildcats': '0017',
             'arkansas-razorbacks': '0019',
             'arkansas-state-red-wolves': '0022',
-            'army-black-knights': '0024',
+            'army-west-point-black-knights': '0024',
             'auburn-tigers': '0028',
             'austin-peay-governors': '0032',
             'bakersfield-roadrunners': '1105',
