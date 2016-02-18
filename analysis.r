@@ -272,6 +272,25 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
 }
 # Run to here...
 
+east_team_list = c(
+    'villanova-wildcats',
+    'michigan-state-spartans',
+    'west-virginia-mountaineers',
+    'utah-runnin-utes',
+    'duke-blue-devils',
+    'usc-trojans',
+    'colorado-buffaloes',
+    'pittsburgh-panthers',
+    'monmouth-hawks',
+    'butler-bulldogs',
+    'florida-gators',
+    'chattanooga-mocs',
+    'akron-zips',
+    'yale-bulldogs',
+    'new-mexico-state-aggies',
+    'north-florida-ospreys' 
+)
+
 # RPI = (WP * 0.25) + (OWP * 0.50) + (OOWP * 0.25)
 
 predictBracketWinner<-function(team_list, df, model, nScenarios=10000)
