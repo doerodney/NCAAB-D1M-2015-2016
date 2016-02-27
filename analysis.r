@@ -272,6 +272,26 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
 }
 # Run to here...
 
+rpi_top_16 = c(
+    'kansas-jayhawks', 
+    'villanova-wildcats',
+    'oklahoma-sooners',
+    'oregon-ducks',
+    'virginia-cavaliers',
+    'xavier-musketeers',
+    'north-carolina-tar-heels',
+    'miami-fl-hurricanes',
+    'maryland-terrapins',
+    'utah-runnin-utes',
+    'duke-blue-devils',
+    'kentucky-wildcats',
+    'iowa-hawkeyes',
+    #'smu-mustangs',
+    'west-virginia-mountaineers',
+    'michigan-state-spartans',
+    'dayton-flyers'
+)
+
 east_team_list = c(
     'villanova-wildcats',
     'michigan-state-spartans',
