@@ -294,20 +294,20 @@ rpi_top_16 = c(
 
 east_team_list = c(
     'villanova-wildcats',
-    'michigan-state-spartans',
+    'miami-fl-hurricanes',
     'west-virginia-mountaineers',
-    'utah-runnin-utes',
-    'duke-blue-devils',
+    'maryland-terrapins',
+    'iowa-state-cyclones',
+    'dayton-flyers',
     'usc-trojans',
-    'colorado-buffaloes',
-    'pittsburgh-panthers',
-    'monmouth-hawks',
+    'notre-dame-fighting-irish',
+    'wisconsin-badgers',
     'butler-bulldogs',
-    'florida-gators',
-    'chattanooga-mocs',
+    'temple-owls',
+    'valparaiso-crusaders',
+    'hofstra-pride',
     'akron-zips',
-    'yale-bulldogs',
-    'new-mexico-state-aggies',
+    'belmont-bruins',
     'north-florida-ospreys' 
 )
 
