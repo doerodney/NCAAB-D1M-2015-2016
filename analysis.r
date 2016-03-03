@@ -297,16 +297,19 @@ east_team_list = c(
     'villanova-wildcats',
     'miami-fl-hurricanes',
     'west-virginia-mountaineers',
-    'maryland-terrapins',
-    'iowa-state-cyclones',
-    'dayton-flyers',
-    'usc-trojans',
-    'notre-dame-fighting-irish',
+    'purdue-boilermakers',
+    
+    'baylor-bears',
+    'iowa-hawkeyes',
+    'south-carolina-gamecocks',
+    'saint-josephs-hawks',
+    
     'wisconsin-badgers',
     'butler-bulldogs',
-    'temple-owls',
-    'valparaiso-crusaders',
-    'hofstra-pride',
+    'monmouth-hawks',
+    'ualr-trojans',
+    
+    'stony-brook-seawolves',
     'akron-zips',
     'belmont-bruins',
     'north-florida-ospreys' 
