@@ -307,7 +307,7 @@ east_team_list = c(
     'wisconsin-badgers',
     'butler-bulldogs',
     'monmouth-hawks',
-    'ualr-trojans',
+    'little-rock-trojans',
     
     'stony-brook-seawolves',
     'akron-zips',
