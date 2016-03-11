@@ -330,6 +330,7 @@ big_east_team_list = c(
 	'st-johns-red-storm'
 )
 
+
 predictBigEastWinner<-function(team_list, df, model, nScenarios=10000)
 {
 	winner = ''
@@ -354,7 +355,7 @@ predictBigEastWinner<-function(team_list, df, model, nScenarios=10000)
 		semi_finalist[1] = predictWinner(quarter_finalist[1], quarter_finalist[8], df, model, nScenarios)
 		semi_finalist[2] = predictWinner(quarter_finalist[5], quarter_finalist[4], df, model, nScenarios)
 		semi_finalist[3] = predictWinner(quarter_finalist[7], quarter_finalist[2], df, model, nScenarios)
-		semi_finalist[1] = predictWinner(quarter_finalist[6], quarter_finalist[3], df, model, nScenarios)
+		semi_finalist[4] = predictWinner(quarter_finalist[6], quarter_finalist[3], df, model, nScenarios)
 
 		cat("\n")
 		cat("Semi-finals:\n")
@@ -369,6 +370,7 @@ predictBigEastWinner<-function(team_list, df, model, nScenarios=10000)
 
 	return(winner)
 }
+
 	
 predictBracketWinner<-function(team_list, df, model, nScenarios=10000)
 {
