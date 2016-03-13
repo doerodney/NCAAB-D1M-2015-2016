@@ -317,60 +317,6 @@ east_team_list = c(
 
 # RPI = (WP * 0.25) + (OWP * 0.50) + (OOWP * 0.25)
 
-big_east_team_list = c(
-	'villanova-wildcats',
-	'xavier-musketeers',
-	'seton-hall-pirates',
-	'providence-friars',
-	'butler-bulldogs',
-	'creighton-bluejays',
-	'marquette-golden-eagles',
-	'georgetown-hoyas',
-	'depaul-blue-demons',
-	'st-johns-red-storm'
-)
-
-
-predictBigEastWinner<-function(team_list, df, model, nScenarios=10000)
-{
-	winner = ''
-
-	# Preallocate vectors for subsequent rounds.
-	quarter_finalist = character(8)
-	semi_finalist = character(4)
-	finalist = character(2)
-
-	if (length(team_list) == 10) {
-		quarter_finalist[1] = team_list[1] 
-		quarter_finalist[2] = team_list[2]
-		quarter_finalist[3] = team_list[3]
-		quarter_finalist[4] = team_list[4]
-		quarter_finalist[5] = team_list[5]
-		quarter_finalist[6] = team_list[6]
-		quarter_finalist[7] = predictWinner(team_list[7], team_list[10], df, model, nScenarios)
-		quarter_finalist[8] = predictWinner(team_list[8], team_list[9], df, model, nScenarios)
-
-		cat("\n")
-		cat("Quarter-finals:\n")
-		semi_finalist[1] = predictWinner(quarter_finalist[1], quarter_finalist[8], df, model, nScenarios)
-		semi_finalist[2] = predictWinner(quarter_finalist[5], quarter_finalist[4], df, model, nScenarios)
-		semi_finalist[3] = predictWinner(quarter_finalist[7], quarter_finalist[2], df, model, nScenarios)
-		semi_finalist[4] = predictWinner(quarter_finalist[6], quarter_finalist[3], df, model, nScenarios)
-
-		cat("\n")
-		cat("Semi-finals:\n")
-		finalist[1] = predictWinner(semi_finalist[1], semi_finalist[2], df, model, nScenarios)
-		finalist[2] = predictWinner(semi_finalist[3], semi_finalist[4], df, model, nScenarios)
-
-		cat("\n")
-		cat("Finals:\n")
-
-		winner = predictWinner(finalist[1], finalist[2], df, model, nScenarios)
-	}
-
-	return(winner)
-}
-
 	
 predictBracketWinner<-function(team_list, df, model, nScenarios=10000)
 {
