@@ -272,51 +272,7 @@ predictWinner <- function(teamName, opponentName, df, model, nScenarios=10000)
 }
 # Run to here...
 
-rpi_top_16 = c(
-    'kansas-jayhawks', 
-    'villanova-wildcats',
-    'virginia-cavaliers',
-    'oregon-ducks',
-    'xavier-musketeers',
-    'oklahoma-sooners',
-    'miami-fl-hurricanes',
-    'utah-runnin-utes',
-    'north-carolina-tar-heels',
-    'maryland-terrapins',
-    'west-virginia-mountaineers',
-    'duke-blue-devils',
-    #'smu-mustangs',
-    'michigan-state-spartans',
-    'california-golden-bears',
-    'kentucky-wildcats',
-    # 'louisville-cardinals',
-    'purdue-boilermakers'
-)
-
-east_team_list = c(
-    'villanova-wildcats',
-    'miami-fl-hurricanes',
-    'west-virginia-mountaineers',
-    'purdue-boilermakers',
-    
-    'baylor-bears',
-    'iowa-hawkeyes',
-    'south-carolina-gamecocks',
-    'saint-josephs-hawks',
-    
-    'wisconsin-badgers',
-    'butler-bulldogs',
-    'monmouth-hawks',
-    'little-rock-trojans',
-    
-    'stony-brook-seawolves',
-    'akron-zips',
-    'belmont-bruins',
-    'north-florida-ospreys' 
-)
-
 # RPI = (WP * 0.25) + (OWP * 0.50) + (OOWP * 0.25)
-
 	
 predictBracketWinner<-function(team_list, df, model, nScenarios=10000)
 {
@@ -363,61 +319,77 @@ predictBracketWinner<-function(team_list, df, model, nScenarios=10000)
 }  
 
 
-get_east_teams<-function()
+get_east_teams<-function(df, model)
 {  
-  teams = c('villanova-wildcats', 'virginia-cavaliers', 
-  'oklahoma-sooners', 'louisville-cardinals',
-  'uni-panthers', 'providence-friars',
-  'michigan-state-spartans', 'north-carolina-state-wolfpack',
-  'lsu-tigers', 'georgia-bulldogs', 
-  'dayton-flyers', 'wyoming-cowboys', 
-  'uc-irvine-anteaters', 'albany-great-danes', 
-  'belmont-bruins', 'lafayette-leopards') 
+  teams = c(
+	'north-carolina-tar-heels', 'xavier-musketeers',
+	'west-virginia-mountaineers', 'kentucky-wildcats',
+	'indiana-hoosiers', 'notre-dame-fighting-irish',
+	'wisconsin-badgers', 'usc-trojans',
+	'providence-friars', 'pittsburgh-panthers',
+	'play-in', 'chattanooga-mocs', 
+	'stony-brook-seawolves', 'stephen-f-austin-lumberjacks',
+	'weber-state-wildcats', 'play-in'
+	
+  ) 
+  
+  teams[11] = predictWinner('michigan-wolverines', 'tulsa-golden-hurricane', df, model)
+  teams[16] = predictWinner('fgcu-eagles', 'fairleigh-dickinson-knights', df, model)
   
   return(teams)
 }  
  
  
-get_midwest_teams<-function()
+get_midwest_teams<-function(df, model)
 {
-  teams = c('kentucky-wildcats', 'kansas-jayhawks', 
-  'notre-dame-fighting-irish', 'maryland-terrapins', 
-  'west-virginia-mountaineers','butler-bulldogs',  
-  'wichita-state-shockers',  'cincinnati-bearcats', 
-  'purdue-boilermakers', 'indiana-hoosiers', 
-  'texas-longhorns', 'buffalo-bulls', 
-  'valparaiso-crusaders', 'northeastern-huskies',
-  'new-mexico-state-aggies', 'hampton-pirates')
+  teams = c(
+	'virginia-cavaliers', 'michigan-state-spartans',
+	'utah-runnin-utes', 'iowa-state-cyclones',
+	'purdue-boilermakers', 'seton-hall-pirates',
+	'dayton-flyers', 'texas-tech-red-raiders',
+	'butler-bulldogs', 'syracuse-orange',
+	'gonzaga-bulldogs', 'little-rock-trojans',
+	'iona-gaels', 'fresno-state-bulldogs',
+	'middle-tennessee-blue-raiders', 'hampton-pirates'
+  )
   
   return(teams)
 }
 
 
-get_south_teams<-function()
+get_south_teams<-function(df, model)
 {
-  teams = c('duke-blue-devils','gonzaga-bulldogs',
-  'iowa-state-cyclones', 'georgetown-hoyas',
-  'utah-runnin-utes', 'smu-mustangs',
-  'iowa-hawkeyes', 'san-diego-state-aztecs',
-  'st-johns-red-storm', 'davidson-wildcats',
-  'ucla-bruins', 'stephen-f-austin-lumberjacks',
-  'eastern-washington-eagles', 'uab-blazers',
-  'north-dakota-state-bison', 'robert-morris-colonials')
+  teams = c(
+	'kansas-jayhawks', 'villanova-wildcats',
+	'miami-fl-hurricanes', 'california-golden-bears',
+	'maryland-terrapins', 'arizona-wildcats',
+	'iowa-hawkeyes', 'colorado-buffaloes',
+	'connecticut-huskies', 'temple-owls',
+	'play-in', 'south-dakota-state-jackrabbits',
+	'hawaii-rainbow-warriors', 'buffalo-bulls',
+	'unc-asheville-bulldogs', 'austin-peay-governors'
+  )
   
-   return(teams)
+  teams[11] = predictWinner('wichita-state-shockers', 'vanderbilt-commodores', df, model) 
+  
+  return(teams)
 }
 
 
-get_west_teams<-function()
+get_west_teams<-function(df, model)
 {
-  teams = c('wisconsin-badgers', 'arizona-wildcats', 
-  'baylor-bears', 'north-carolina-tar-heels', 
-  'arkansas-razorbacks', 'xavier-musketeers',
-  'vcu-rams', 'oregon-ducks',
-  'oklahoma-state-cowboys', 'ohio-state-buckeyes',
-  'ole-miss-rebels', 'wofford-terriers',
-  'harvard-crimson', 'georgia-state-panthers',
-  'texas-southern-tigers', 'coastal-carolina-chanticleers')
+  teams = c(
+	'oregon-ducks', 'oklahoma-sooners',
+	'texas-am-aggies', 'duke-blue-devils',
+	'baylor-bears', 'texas-longhorns',
+	'oregon-state-beavers', 'saint-josephs-hawks',
+	'cincinnati-bearcats', 'vcu-rams',
+	'uni-panthers', 'yale-bulldogs',
+	'uncw-seahawks', 'green-bay-phoenix',
+	'bakersfield-roadrunners', 'play-in' 
+  )
+  
+  teams[16] = predictWinner('holy-cross-crusaders', 'southern-university-jaguars', df, model)
   
   return(teams)
 }
@@ -429,25 +401,25 @@ predictTournamentWinner<-function(df, model)
 	# East
 	cat("\n")
     cat("East Bracket Championship:\n")
-	teams = get_east_teams()
+	teams = get_east_teams(df, model)
 	semifinalists[1] = predictBracketWinner(teams, df, model)
 	
 	# Midwest
 	cat("\n")
     cat("Midwest Bracket Championship:\n")
-	teams = get_midwest_teams()
+	teams = get_midwest_teams(df, model)
 	semifinalists[2] = predictBracketWinner(teams, df, model)
 	
 	# West
 	cat("\n")
     cat("West Bracket Championship:\n")
-	teams = get_west_teams()
+	teams = get_west_teams(df, model)
 	semifinalists[3] = predictBracketWinner(teams, df, model)
 	
 	# South
 	cat("\n")
     cat("South Bracket Championship:\n")
-	teams = get_south_teams()
+	teams = get_south_teams(df, model)
 	semifinalists[4] = predictBracketWinner(teams, df, model)
 	
 	cat("\n")
