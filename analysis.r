@@ -334,7 +334,7 @@ get_east_teams<-function(df, model)
   ) 
   
   teams[11] = predictWinner('michigan-wolverines', 'tulsa-golden-hurricane', df, model)
-  teams[16] = predictWinner('fgcu-eagles', 'fairleigh-dickinson-knights', df, model)
+  teams[16] = fgcu-eagles'
   
   return(teams)
 }  
@@ -370,7 +370,7 @@ get_south_teams<-function(df, model)
 	'unc-asheville-bulldogs', 'austin-peay-governors'
   )
   
-  teams[11] = predictWinner('wichita-state-shockers', 'vanderbilt-commodores', df, model) 
+  teams[11] = 'wichita-state-shockers' 
   
   return(teams)
 }
@@ -389,7 +389,7 @@ get_west_teams<-function(df, model)
 	'bakersfield-roadrunners', 'play-in' 
   )
   
-  teams[16] = predictWinner('holy-cross-crusaders', 'southern-university-jaguars', df, model)
+  teams[16] = 'holy-cross-crusaders' #
   
   return(teams)
 }
