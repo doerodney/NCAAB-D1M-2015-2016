@@ -333,8 +333,8 @@ get_east_teams<-function(df, model)
 	
   ) 
   
-  teams[11] = predictWinner('michigan-wolverines', 'tulsa-golden-hurricane', df, model)
-  teams[16] = fgcu-eagles'
+  teams[11] = 'michigan-wolverines'
+  teams[16] = 'fgcu-eagles'
   
   return(teams)
 }  
